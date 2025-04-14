@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router"
+import styles from "../styles/card.module.scss"
 
 export const Card = ({place}) => {
     const navigate = useNavigate()
@@ -6,7 +7,8 @@ export const Card = ({place}) => {
     
     return(
         <>
-        <section onClick={() => navigate(`/detail/${place.id}`)}>
+        <section className={styles.section}
+        onClick={() => navigate(`/detail/${place.id}`)}>
             <img src={`${BASE_URL}/${place.image.src}`} alt={place.title}/>
             <div> {place.title} </div>
         </section>
