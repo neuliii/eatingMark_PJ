@@ -5,7 +5,7 @@ import { Favorite } from "./pages/Favorite"
 
 function App() {
 
-
+  console.log(import.meta.env.BASE_URL)
   return (
     <>
       <nav>
