@@ -30,8 +30,7 @@ function App() {
               setPlaces(allPlace)
               setFav(favPlace)
             } catch (err) {
-              console.error(err);
-              setIsError("Loading Fail ...")
+              setIsError("Loading Fail ...", err)
             } finally {
               setIsPending(false)
             }
