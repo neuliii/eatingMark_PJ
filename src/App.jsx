@@ -5,7 +5,7 @@ import { Favorite } from "./pages/Favorite"
 import styles from "./styles/app.module.scss"
 import { useEffect, useState } from "react"
 import { getPlaces, getUserPlaces } from "./api/placeApi"
-import { Loading } from "./components/LoadingError"
+import { Error404, Loading } from "./components/LoadingError"
 
 
 
@@ -42,6 +42,7 @@ function App() {
   return (
     <>
 
+    {/* &&는 왼쪽이 true일 때만 오른쪽 값을 반환 */}
     { isError && <Error message={isError} /> }
     { isPending && <Loading /> }
 
@@ -62,6 +63,7 @@ function App() {
             <Route path={"/"} element={<Main places={places}/>}/>
             <Route path={"/detail/:placeId"} element={<Detail />}/>
             <Route path={"/favorite"} element={<Favorite fav={fav}/>}/>
+            <Route path={"*"} element={<Error404 />}/>
           </Routes>
         </main>
         </>
