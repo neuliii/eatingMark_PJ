@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { getPlaces, getUserPlaces } from "../api/placeApi";
+import { getPlaces } from "../api/placeApi";
 import { useNavigate } from "react-router";
 
 export const GetFetchApi = createContext(null);
@@ -9,7 +9,6 @@ export const GetFetchApiProvider = ({ children }) => {
     const navigate = useNavigate()
 
     const [places, setPlaces] = useState([])
-    const [fav, setFav] = useState([])
 
     const [isError, setIsError] = useState(null)
     const [isPending, setIsPending] = useState(false)
@@ -21,9 +20,7 @@ export const GetFetchApiProvider = ({ children }) => {
               setIsError(null)
               setIsPending(true)
               const allPlace = await getPlaces();
-              const favPlace = await getUserPlaces()
               setPlaces(allPlace)
-              setFav(favPlace)
             } catch (err) {
               setIsError("Loading Fail ... " + err.message)
             } finally {
@@ -35,7 +32,7 @@ export const GetFetchApiProvider = ({ children }) => {
     
     return (
     	<GetFetchApi.Provider 
-        value={{places, setPlaces, fav, setFav, isError, setIsError, isPending, setIsPending, navigate}}
+        value={{places, setPlaces, isError, setIsError, isPending, setIsPending, navigate}}
         >
             
         	{children}

@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router"
 import styles from "../styles/card.module.scss"
+import FavoriteBtn from "./FavoriteBtn";
 
 
-export const Card = ({place, fav}) => {
+export const Card = ({place}) => {
     const navigate = useNavigate()
     const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -14,10 +15,7 @@ export const Card = ({place, fav}) => {
         onClick={() => navigate(`/detail/${place.id}`)}>
             <img src={`${BASE_URL}/${place.image.src}`} alt={place.title}/>
             <div> {place.title} </div>
-            <button onClick={(e) => {e.stopPropagation();
-                {fav ? '' : ''}}
-            }
-            > {fav ? '♥︎' : '♡'} </button>
+            <FavoriteBtn place={place} />
         </section>
         </>
     )

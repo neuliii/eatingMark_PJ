@@ -6,14 +6,18 @@ import styles from "./styles/app.module.scss"
 import { Error, Error404, Loading } from "./components/LoadingError"
 import { GetFetchApiProvider, GetFetchApi } from "./context/GetFetchApi";
 import { useContext } from "react"
+import { FavoriteFetchApiProvider } from "./context/FavoriteFetchApi"
+// import { FavoriteFetchApiProvider } from "./context/FavoriteFetchApi"
 
 
 
 function ContextApp() {
   return (
-    <GetFetchApiProvider>
-      <App />
-    </GetFetchApiProvider>
+    <FavoriteFetchApiProvider>
+      <GetFetchApiProvider>
+        <App />
+      </GetFetchApiProvider>
+    </FavoriteFetchApiProvider>
   )
 }
 export default ContextApp;
@@ -22,7 +26,7 @@ export default ContextApp;
 
 function App() {
 
-  const { places, fav, isError, isPending, navigate } = useContext(GetFetchApi)
+  const {isError, isPending, navigate } = useContext(GetFetchApi)
   
 
   return (
@@ -46,9 +50,9 @@ function App() {
 
           <main className={styles.main}>
             <Routes>
-              <Route path={"/"} element={<Main places={places}/>}/>
+              <Route path={"/"} element={<Main/>}/>
               <Route path={"/detail/:placeId"} element={<Detail />}/>
-              <Route path={"/favorite"} element={<Favorite fav={fav}/>}/>
+              <Route path={"/favorite"} element={<Favorite/>}/>
               <Route path={"*"} element={<Error404 />}/>
             </Routes>
           </main>
