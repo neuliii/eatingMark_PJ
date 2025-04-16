@@ -1,12 +1,32 @@
-# React + Vite
+# EatingMark
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 나만의 맛집 찜하기
+- axios 를 이용하여 서버 데이터를 불러오기.
+- 찜하기 기능 추가
 
-Currently, two official plugins are available:
+### 구현 기능
+▪️ 찜 하기 기능
+  - 하트 버튼을 누르면 Favorite 리스트에 추가가 되며 삭제도 가능하다
+▪️ 삭제 확인 모달창
+  - 채워져 있는 하트를 다시 누르면 해당 찜하기 기능을 해지 할 것인지 확인하는 모달창 팝업 기능
+▪️ 위치 기반 정렬
+  - 브라우저를 통해 사용자의 위치를 받아서 그 기준으로 가까운 순서대로 정렬해주는 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 필요 역량
 
-## Expanding the ESLint configuration
+#### Frontend
+- React
+- Axios
+- ContextApi
+- Createmodal
+- SCSS
+- tailwind css
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#### Backend
+- Node.js
+- Express
+
+
+
+## 배포 링크
+https://eating-mark-pj.vercel.app/
