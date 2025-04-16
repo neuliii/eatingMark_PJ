@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import styles from '../styles/loadingerror.module.scss'
+import { GetFetchApi } from '../context/GetFetchApi';
 
 
-export const Error = ({message}) => {
-    return <div className={styles.error}>❗ {message}</div>;
+export const Error = () => {
+    const { isError } = useContext(GetFetchApi)
+    return <div className={styles.error}>❗ {isError}</div>;
 }
 
 export const Error404 = () => {

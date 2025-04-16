@@ -1,13 +1,16 @@
 
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Card } from "../components/Card"
 import { sortPlacesByDistance } from "../components/loc"
 import styles from "../styles/main.module.scss"
 import { Favorite } from "./Favorite"
+import { GetFetchApi } from "../context/GetFetchApi"
 
-export function Main ({places}) {
+export function Main () {
     
     const [userLocation, setUserLocation] = useState(null)
+    const [distance, setDistance] = useState(false)
+    const { places } = useContext(GetFetchApi)
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -26,10 +29,16 @@ export function Main ({places}) {
     return(
         <div className={styles.firdiv}>
             <Favorite/>
-            <h1 className={styles.h1}> All Place ... </h1>
             <div className={styles.secdiv}>
-                {sortedPlaces
-                .map((place) => <Card key={place.id} place={place}/>)}
+                <h1 className={styles.h1}> All Place ... </h1>
+                <button className={styles.button}
+                onClick={() => setDistance(!distance)}> {distance ? "기본순" : "거리순"}</button>
+            </div>
+            <div className={styles.thrdiv}>
+                {distance ? 
+                sortedPlaces.map((place) => <Card key={place.id} place={place}/>) 
+                : places.map((place) => <Card key={place.id} place={place}/>)}
+
             </div>
         </div>
     )

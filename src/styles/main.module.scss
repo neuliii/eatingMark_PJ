@@ -16,9 +16,21 @@
 }
 .secdiv{
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.thrdiv{
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 80%;
     padding: 20px;
     gap: 10px;
+}
+.button{
+    // border: 1px solid white;
+    background-color: rgb(83, 83, 83);
+    border-radius: 5px;
+    padding: 7px;
+    height: 30px;
 }
