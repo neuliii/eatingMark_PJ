@@ -1,17 +1,33 @@
-.h1{
-    font-size: 30px;
-    font-weight: bold;
-}
-.firdiv{
+.container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-
-}
-.secdiv{
+    gap: 30px;
+    padding: 20px;
+  }
+  
+  .leftSide {
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .h1 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .sidediv {
+    background-color: white;
+    height: 150px;
+    width: 2px;
+  }
+  
+  .secdiv {
     display: flex;
     flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
-}
+  }

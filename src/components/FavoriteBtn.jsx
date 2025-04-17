@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { FavoriteFetchApi } from "../context/FavoriteFetchApi";
-import ModalPortal from "./ModalPotal"; // 추가
+import ModalPortal from "./ModalPortal"; // 추가
 import styles from "../styles/favoritebtn.module.scss";
 
 const FavoriteBtn = ({ place }) => {
@@ -10,44 +10,44 @@ const FavoriteBtn = ({ place }) => {
   // 하트 체크 함수
   const isLiked = userPlaces?.some((p) => p.id === place.id);
 
-  // 하트 버튼 클릭 핸들링
-  const handleClick = (e) => {
+  const handleFavoriteAction = (e, action) => {
     e.preventDefault();
     e.stopPropagation();
-    if (isLiked) {
-      setShowConfirm(true); // 삭제 모달 띄움
-    } else {
-      addPlace(place); // 상태 유지하면서 찜 추가
+  
+    switch (action) {
+      case "toggle":
+        if (isLiked) {
+          setShowConfirm(true); // 삭제 확인 모달 표시
+        } else {
+          addPlace(place); // 찜 추가
+        }
+        break;
+      case "confirm":
+        removePlace(place.id); // 찜 삭제
+        setShowConfirm(false); // 모달 닫기
+        break;
+      case "cancel":
+        setShowConfirm(false); // 모달 닫기만
+        break;
+      default:
+        break;
     }
-  };
-
-  const confirmDelete = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    removePlace(place.id); // 진짜 삭제 요청 보내고
-    setShowConfirm(false); // 모달 닫기
-  };
-
-  const cancelDelete = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setShowConfirm(false); // 삭제 취소하고 모달만 닫기
   };
 
   return (
     <>
-      <button onClick={handleClick} className={styles.heart}>
+      <button onClick={(e) => handleFavoriteAction(e, "toggle")} className={styles.heart}>
         {isLiked ? "♥︎" : "♡"}
       </button>
 
       {showConfirm && (
         <ModalPortal>
-          <div className={styles.modalOverlay} onClick={cancelDelete}>
+          <div className={styles.modalOverlay} onClick={(e) => handleFavoriteAction(e, "cancel")}>
             <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
               <p>정말 찜을 삭제하시겠어요?</p>
               <div className={styles.modalButtons}>
-                <button onClick={confirmDelete}>삭제</button>
-                <button onClick={cancelDelete}>취소</button>
+                <button onClick={(e) => handleFavoriteAction(e, "confirm")}>삭제</button>
+                <button onClick={(e) => handleFavoriteAction(e, "cancel")}>취소</button>
               </div>
             </div>
           </div>

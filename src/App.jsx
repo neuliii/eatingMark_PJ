@@ -7,17 +7,20 @@ import { Error, Error404, Loading } from "./components/LoadingError"
 import { GetFetchApiProvider, GetFetchApi } from "./context/GetFetchApi";
 import { useContext } from "react"
 import { FavoriteFetchApiProvider } from "./context/FavoriteFetchApi"
+import { UserLocationProvider } from "./context/UserLocation"
 // import { FavoriteFetchApiProvider } from "./context/FavoriteFetchApi"
 
 
 
 function ContextApp() {
   return (
-    <FavoriteFetchApiProvider>
-      <GetFetchApiProvider>
-        <App />
-      </GetFetchApiProvider>
-    </FavoriteFetchApiProvider>
+<GetFetchApiProvider>
+  <FavoriteFetchApiProvider>
+    <UserLocationProvider>
+      <App />
+    </UserLocationProvider>
+  </FavoriteFetchApiProvider>
+</GetFetchApiProvider>
   )
 }
 export default ContextApp;
@@ -44,7 +47,6 @@ function App() {
 
           <nav className={styles.nav}>
             <Link to={'/'}> Main </Link>
-            <Link to={'/detail'}> Detail </Link>
             <Link to={'/favorite'}> Favorite </Link>
           </nav>
 

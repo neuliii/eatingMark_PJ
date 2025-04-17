@@ -7,7 +7,7 @@
 .h1{
     padding: 15px;
     margin-top: 10px;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
     background-image: linear-gradient(to right, rgb(255, 255, 255), rgb(79, 79, 79));
     color: transparent;
@@ -27,10 +27,20 @@
     padding: 20px;
     gap: 10px;
 }
+// 기본순
 .button{
     // border: 1px solid white;
     background-color: rgb(83, 83, 83);
     border-radius: 5px;
     padding: 7px;
     height: 30px;
+    text-align: center;
+}
+// 거리순
+.button1{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 7px;
+    height: 30px;
+    text-align: center;
 }

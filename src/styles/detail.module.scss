@@ -1,0 +1,27 @@
+.firdiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 50px;
+
+    h1{
+        font-size: 30px;
+        font-weight: bold;
+    }
+    img{
+        width: 300px;
+    }
+    div{
+        background-color: white;
+        height: 3px;
+        width: 400px;
+    }
+    p{
+        font-size: 15px;
+    }
+
+}
